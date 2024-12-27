@@ -1,0 +1,14 @@
+{
+    "ulkemizin_su_varligi": {
+        "denizler": {
+            "uc_tarafi_denizlerle_cevrili_olan_turkiye": {
+                "kiyi_uzunlugu": "8333 km"
+            },
+            "marmara_denizi": "Kucuk bir ic denizdir. Istanbul ve Canakkale bogazlari deniz ticaretini ulasimdan avantaj saglar. Karadenizle kiyi olan ulkelerin Akdeniz'e ve dunya'ya acilan kapisidir. Gele gecik hinterlandi ile sahibi olan Istanbul Limani, demir yolu ile Anadolu ve Trakya'ya baglanmaktadir. Bogazlar birliktelikte onemlidir. Gol eden kirlilik de gazalara onemli. Marmara Denizi'ne ulasimi ve turizm acisinda onemlidir.",
+            "ege_denizi": "Ege Bolgesi'nde daglarin kiyidan denize uzanmasi nedeniyle koy, korfez ve yarimada sayisini artirmistir. Ticaret merkezi bakimindan onemliligi Ile en buyuk liman olan Izmir limani. Limani, bu bolgede eser olur. Deniz suyu sicakligi fazlaligindan yaz tarihimiz gelismistir. Tuzluluk degeri kuzeyden guneye dogru artar.",
+            "karadeniz": "Ulkemizde tuzlulugu en az denizdir. Bu durumu, daha kuzeyde olmasi denizlem, sicakligin ve buharlasmanin az olmasi beslenme kaynaklarinin fazla olmasi etkilenmistir. Denizlerdeki su ortalamasin yaklasik olarak, karadeniz'den saglanir. Karadeniz'de 200 metrenin altinda derinliklerde tehlikeli hidrojen gazindan dolayi canli yasamaz. Zenginliktir. Trabzon ve Samsun limanlari gelismistir. Kiyi turizmi gelismemistir.",
+            "akdeniz": "Akdeniz'de guneslenme surecinin uzun (3000 saat), deniz suyu sicakliginin yuksek, denize girme surecinin uzun olmasi kiyi turizminin gelismesine neden olmustur. Mersin ve Iskenderun limanlari yag sebze ve meyve ihraç etmektedir. Ulkemizin etrafinda yer alan en buyuk denizidir."
+        },
+        "turkiye": "Orta Dogu'daki komsulari arasinda su potansiyeli en zengin ulkedir."
+    }
+}

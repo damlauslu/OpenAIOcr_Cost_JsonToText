@@ -1,0 +1,42 @@
+DilTanimi_Ozellkleri:
+    description:
+        - Item 1:
+            Ulus olma gercegidir. Insani gecmisten gelecege tasir, sosyokulturel birikimdir.
+        - Item 2:
+            Duyulara isaret dilini inceler: semioloji.
+        - Item 3:
+            Hazirli kendi kurallar icinde yoresel gelisir.
+        - Item 4:
+            Irk + dil + vatan = millet
+    ozellikler:
+        - Item 1:
+            Canlidir, dogar - gelisir - olur. Eser degildir.
+        - Item 2:
+            Sosyal.
+        - Item 3:
+            Kodicidir: kodgnot -> alici.
+        - Item 4:
+            Kulture baglantili: kulturu olusmasi ve gelismesinde etkili, krematiden kremaga aktarir.
+        - Item 5:
+            Kasaklari baglar.
+        - Item 6:
+            Uzlama sistemidir. Ulus bilinci olusturur.
+        - Item 7:
+            Duzenlidir, her dilin kendi kurali vardir.
+    Dil_Kuramlari:
+        1:
+            title:
+                Evrimci, Antropolojik
+            sub_points:
+                - Item 1:
+                    Yasantidirl, temel alan
+                - Item 2:
+                    Ilk nerles: ""
+                - Item 3:
+                    Birlikte calismayi: ""
+        2:
+            Dogustanci Gorus
+        3:
+            Gunes Dil Kurami (Hollare de Barenton) Butun dilleril sunmadan. Homo Energe, Turkce adilarda yola cikip Turkcenin bicimlerinin ilk insan dili oldugunu kigi, Atlatir de adumalar yapmis.
+        4:
+            Tlonitsay Gorus: Dogustaci gorugeten farkli cinddan bahsederek insancin dil ogrenme yetisine sahip oldugunu oayklar.
