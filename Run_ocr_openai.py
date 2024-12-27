@@ -95,7 +95,7 @@ def main():
 
     # Initialize OpenAI client
     api_key_used = False
-    client = OpenAI(api_key="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")
+    client = OpenAI(api_key="Put your API Key")
 
     # Make API request
     try:
