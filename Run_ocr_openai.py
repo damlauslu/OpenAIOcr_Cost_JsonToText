@@ -48,9 +48,17 @@ def validate_image(image_path):
     if not image_path.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif')):
         raise ValueError(f"Unsupported image format: {image_path}")
 
-def calculate_cost(total_tokens, cost_per_1000_tokens=0.03):
-    """Calculates the API cost based on token usage."""
-    return (total_tokens / 1000) * cost_per_1000_tokens
+def calculate_cost(total_tokens, model_name):
+    """Calculates the API cost based on token usage and model."""
+    cost_per_1000_tokens = {
+        "gpt-3.5-turbo": 0.0015,  # Input cost per 1000 tokens
+        "gpt-4": 0.03,           # Input cost per 1000 tokens
+        "gpt-4o": 0.00015,       # Input cost per 1000 tokens (example GPT-4o input cost)
+    }
+    if model_name not in cost_per_1000_tokens:
+        raise ValueError(f"Unknown model '{model_name}'. Cannot calculate cost.")
+
+    return (total_tokens / 1000) * cost_per_1000_tokens[model_name]
 
 def save_cost_to_file(total_cost, image_name, output_dir):
     """Appends the cost, image name, and timestamp to a txt file."""
@@ -99,6 +107,7 @@ def main():
 
     # Make API request
     try:
+        model_name = 'gpt-4o'
         response = client.chat.completions.create(
             model='gpt-4o',
             messages=[{
@@ -115,8 +124,7 @@ def main():
         # Calculate and display cost
         try:
             total_tokens = response.usage.total_tokens  # Correct attribute access
-            cost_per_1000_tokens = 0.03  # Example cost per 1000 tokens for GPT-4
-            total_cost = calculate_cost(total_tokens, cost_per_1000_tokens)
+            total_cost = calculate_cost(total_tokens, model_name)
             print(f"Total tokens used: {total_tokens}")
             print(f"Estimated API cost: ${total_cost:.6f}")
 
