@@ -1,6 +1,7 @@
 import os
 import json
 
+## NOT IN USE ANYMORE ##
 def extract_all_text_from_json(data, depth=0):
     """Recursively extracts all text-like content from JSON data."""
     text_lines = []

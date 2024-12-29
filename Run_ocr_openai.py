@@ -14,8 +14,8 @@ def encode_image(image_path):
     except Exception as e:
         raise RuntimeError(f"Error encoding image: {e}")
 
-def process_response(response, output_dir, image_local):
-    """Processes the response from the API and saves it as a JSON file."""
+def process_response_to_txt(response, output_dir, image_local):
+    """Processes the response from the API and saves it as a TXT file."""
     try:
         json_string = response.choices[0].message.content
         # Clean the raw response
@@ -24,16 +24,36 @@ def process_response(response, output_dir, image_local):
         json_string = json_string.replace("json\n", "").replace("\n", "")
         json_data = json.loads(json_string)
 
+        # Extract all text recursively
+        def extract_all_text_from_json(data, depth=0):
+            text_lines = []
+            indent = "    " * depth
+            if isinstance(data, dict):
+                for key, value in data.items():
+                    text_lines.append(f"{indent}{key}:")
+                    text_lines.extend(extract_all_text_from_json(value, depth + 1))
+            elif isinstance(data, list):
+                for idx, item in enumerate(data):
+                    text_lines.append(f"{indent}- Item {idx + 1}:")
+                    text_lines.extend(extract_all_text_from_json(item, depth + 1))
+            elif isinstance(data, str):
+                text_lines.append(f"{indent}{data}")
+            elif isinstance(data, (int, float)):
+                text_lines.append(f"{indent}{data}")
+            return text_lines
+
+        extracted_text = "\n".join(extract_all_text_from_json(json_data))
+
         filename_without_extension = os.path.splitext(os.path.basename(image_local))[0]
-        json_filename = f"{filename_without_extension}.json"
+        txt_filename = f"{filename_without_extension}.txt"
 
         os.makedirs(output_dir, exist_ok=True)
-        output_path = os.path.join(output_dir, json_filename)
+        output_path = os.path.join(output_dir, txt_filename)
 
-        with open(output_path, 'w') as file:
-            json.dump(json_data, file, ensure_ascii=False, indent=4)
+        with open(output_path, 'w', encoding='utf-8') as file:
+            file.write(extracted_text)
 
-        print(f"JSON data saved to {output_path}")
+        print(f"Text data saved to {output_path}")
     except KeyError:
         raise ValueError("Unexpected response format: Missing 'choices' or 'message'.")
     except json.JSONDecodeError as e:
@@ -78,13 +98,13 @@ def save_cost_to_file(total_cost, image_name, output_dir):
 def main():
     """Main function to handle the workflow."""
     image_local = 'deneme_tr_images/turkce_elyazisi.png'
-    json_output_dir = './Data/'
+    txt_output_dir = './Results/'
     cost_output_dir = './costdata/'
 
     # Ensure output directories exist before API request
-    os.makedirs(json_output_dir, exist_ok=True)
+    os.makedirs(txt_output_dir, exist_ok=True)
     os.makedirs(cost_output_dir, exist_ok=True)
-    print(f"Output directories are ready: {json_output_dir}, {cost_output_dir}")
+    print(f"Output directories are ready: {txt_output_dir}, {cost_output_dir}")
 
     # Validate image
     try:
@@ -103,7 +123,7 @@ def main():
 
     # Initialize OpenAI client
     api_key_used = False
-    client = OpenAI(api_key="Put your API Key")
+    client = OpenAI(api_key="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")
 
     # Make API request
     try:
@@ -134,8 +154,8 @@ def main():
         except AttributeError:
             print("Token usage information not available in response.")
 
-        # Save JSON response to file in the 'Data' directory
-        process_response(response, json_output_dir, image_local)
+        # Save extracted text from JSON response to TXT file in the 'Results' directory
+        process_response_to_txt(response, txt_output_dir, image_local)
 
     except Exception as e:
         print(f"API request or processing error: {e}")
